@@ -154,7 +154,17 @@ Examples:
 * `#grocerie`
 * `.cash`
 
-## Summery
+## Machine-readable output
+
+**For more complex structured data, programs should accept a flag to provide output (e.g. `--output-format`, or `--message-format` if many lines of structured data are printed out).**
+
+* Programs should support at least json machine-readable output.
+* Programs may also provide their output as CSV or other self-describing format (markdown table).
+* A self-describing format is one where the keys, or some equivalent, are part of the serialized output.
+* Formats like [protobuf](https://protobuf.dev/) are suitable as well, if up-to-date IDLs (e.g. `.proto` files) are published along with releases. One neat trick is to embed them into your binary and add a command to write them out to a given directory.
+* If many lines of structured data are incrementally printed out, prefer a format like [newline-delimited JSON](https://ndjson.org/). This is the format used by Cargo's `--message-format` json option.
+
+### Markdown
 
 | Transaction  | January  | February | March | April | May | June | July | August | September | October | November | December | Total |
 |--------------|----------|----------|-------|-------|-----|------|------|--------|-----------|---------|----------|----------|-------|
