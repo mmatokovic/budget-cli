@@ -50,7 +50,7 @@ To `add` a single transaction use the command `bud add` by `--name*`, `--amount*
 
 * **Start date** defaults to `current date`
 * **Lifetime**: defaults to `1d`
-* **Type** defaults to `expense` but you can set it as `income`:
+* **Operation** defaults to `expense` but you can set it as `income`:
 
 ```Bash
 |> bud add Salary 1300€ 1m --type
@@ -64,7 +64,7 @@ A transaction as the properties:
 * **Start date**: the start date since when the lifetime should be computed
 * **Lifetime**: a duration that the transaction applies to
 * **Tags**: for grouping transactions
-* **Type**: a transaction type `expense` or `income`, defaults to expense
+* **Operation**: a transaction type `expense` or `income`, defaults to expense
 
 ### Parsing rules
 

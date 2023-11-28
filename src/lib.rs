@@ -5,6 +5,7 @@
 
 // modules declarations
 mod cli;
+mod utils;
 pub mod config;
 
 // This is the only export from the crate. It is marked hidden and

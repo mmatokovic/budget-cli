@@ -34,7 +34,7 @@ pub enum Commands {
 impl Bud {
     pub fn exec(self, conn: Connection) -> color_eyre::Result<()> {
         match self.command {
-            Some(Commands::Add(transaction)) => add_data(transaction),
+            Some(Commands::Add(transaction)) => add_data(transaction, conn),
             Some(Commands::Sum) => {
                 println!("The value of my-arg is {:?}", self.command)
             }

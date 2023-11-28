@@ -11,3 +11,4 @@ color-eyre = "0.6.2"
 config = { version = "0.13.4", features = ["toml"] }
 serde = { version = "1.0.193", features = ["derive"] }
 rusqlite = { version = "0.30.0", features = ["bundled"] }
+time = { version = "0.3.30", features = ["parsing", "local-offset"] }
