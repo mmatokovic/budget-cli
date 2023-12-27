@@ -1,9 +1,8 @@
 use clap::{Args, ValueEnum};
 use time::Date;
-use rusqlite::{Connection, params};
 use std::fmt;
 
-use crate::utils::{parse_date, default_date, parse_float};
+use crate::{utils::{parse_date, default_date, parse_float}, Database};
 
 #[derive(Debug, Args)]
 pub struct Transaction {
@@ -19,8 +18,8 @@ pub struct Transaction {
     startdate: Date,
 
     /// Duration that the transaction applies to
-    #[arg(default_value = "1d")]
-    lifetime: String,
+    #[arg(value_parser = parse_date, default_value_t = default_date())]
+    enddate: Date,
     
     /// For grouping transactions
     #[arg(short)]
@@ -47,24 +46,8 @@ impl fmt::Display for OperationChoice {
     }
 }
 
-
-pub fn add_data(transaction :Transaction, conn: Connection) {
+pub fn add_data(transaction :Transaction) {
     println!("{:?}", transaction);
-    
-    const INSERT_QUERY: &str = "INSERT INTO transactions (operation, name, amount, start_date, end_date, tags) VALUES (?, ?, ?, ?, ?, ?)";
-    
-    let tags_str = transaction.tags.join(", ");
-    conn.execute(
-        INSERT_QUERY,
-        params![
-            transaction.operation.to_string(),
-            transaction.name,
-            transaction.amount,
-            transaction.startdate.to_string(),
-            transaction.lifetime.to_string(),
-            tags_str,
-        ],
-    )
-    .unwrap();
-    println!("Transaction added successfully!");
+
+    let database: Database = Database::save(&transaction).unwrap();
 }

@@ -16,7 +16,7 @@ Add `bud` to path.
 
 To `view` budget or transactions, summery or goals:
 
-* view summery report, you can filter by `--id`, `--name`, `--tag` or `--lifetime`, defaults to `1y`.
+* view summery report, you can filter by `--id`, `--name` or `--tag`.
 
     ```Bash
     |> bud view summery
@@ -46,10 +46,10 @@ To `edit` a single transaction use the command `bud edit`:
 |> bud edit --id Netflix 12€ 100320 1m12x .movies .covid
 ```
 
-To `add` a single transaction use the command `bud add` by `--name*`, `--amount*`, `--start_date`, `--lifetime`, `--tag` and `--type`
+To `add` a single transaction use the command `bud add` by `--name*`, `--amount*`, `--startdate`, `--enddate`, `--tag` and `--type`
 
 * **Start date** defaults to `current date`
-* **Lifetime**: defaults to `1d`
+* **End date**: defaults to `current date`
 * **Operation** defaults to `expense` but you can set it as `income`:
 
 ```Bash
@@ -61,8 +61,8 @@ A transaction as the properties:
 
 * **Name**: a descriptive name
 * **Amount**: the amount in monetary currency
-* **Start date**: the start date since when the lifetime should be computed
-* **Lifetime**: a duration that the transaction applies to
+* **Start date**: the start date of transaction
+* **End date**: a duration that the transaction applies to
 * **Tags**: for grouping transactions
 * **Operation**: a transaction type `expense` or `income`, defaults to expense
 
@@ -88,33 +88,6 @@ Examples:
 
 * `10€`
 * `10000.99€`
-
-#### Lifetime
-
-The duration of transaction, optional, defaults to `1d`.
-
-```EBNF
-Lifetime ::= Duration Repeat?
-
-Duration ::= Natural TimeUnit
-Repeat ::= Natural "x"
-TimeUnit ::= "d" | "w" | "m" | "y"
-```
-
-where the `TimeUnit` is:
-
-* `d` days
-* `w` weeks
-* `m` months
-* `y` years
-
-Examples:
-
-* `1m12x` => one month for 12 times, for example for monthly expenses like monthly subscriptions (Netflix, etc)
-* `12m` => twelve months for 1 time, same as `1y`
-* `1w52x` => one week 52 times, for example weekly groceries expenses for all the year
-
-> 💡 the number of repeats they influence the total amount of the transaction: `10€ 1m12x` will result of a transaction of total amount of `120€` while `12m1x` will result in a single transaction of `10€` over 12 months
 
 #### Start date
 
@@ -184,9 +157,11 @@ Remaining Budget: **550**
 ## Useful links
 
 * [docs.rs](https://docs.rs/)
+* [Command Line Interface Guidelines](https://clig.dev/)
 * [mermaid.live](https://mermaid.live/edit)
 * [crates.io](https://crates.io/)
 * [lib.rs](https://lib.rs/)
+* [Rain's Rust CLI recommendations](https://rust-cli-recommendations.sunshowers.io/index.html)
 
 ## License
 
