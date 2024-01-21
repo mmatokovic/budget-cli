@@ -2,7 +2,7 @@ use clap::{Args, ValueEnum};
 use time::Date;
 use std::fmt;
 
-use crate::{utils::{parse_date, default_date, parse_float}, Database};
+use crate::utils::{parse_date, default_date, parse_float};
 
 #[derive(Debug, Args)]
 pub struct Transaction {
@@ -49,5 +49,4 @@ impl fmt::Display for OperationChoice {
 pub fn add_data(transaction :Transaction) {
     println!("{:?}", transaction);
 
-    let database: Database = Database::save(&transaction).unwrap();
 }

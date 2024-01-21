@@ -6,7 +6,7 @@ fn main() -> color_eyre::Result<()> {
 
     let config: Settings = Settings::config()?;
 
-    let database: Database = Database::new(&config.database.path)?;
+    Database::new(&config.database.path)?;
     
     let cli: Bud = Bud::parse();
    

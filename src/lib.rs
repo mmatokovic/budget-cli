@@ -7,11 +7,11 @@
 mod cli;
 mod utils;
 mod config;
-mod database;
+mod db;
 
 // This is the only export from the crate. It is marked hidden and
 // is not part of the public API.
 #[doc(hidden)]
 pub use cli::Bud;
 pub use config::Settings;
-pub use database::Database;
+pub use db::Database;

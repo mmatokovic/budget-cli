@@ -14,36 +14,36 @@ Add `bud` to path.
 
 ## Examples
 
-To `view` budget or transactions, summery or goals:
+To `get` budget or transactions, summery or goals:
 
 * view summery report, you can filter by `--id`, `--name` or `--tag`.
 
     ```Bash
-    |> bud view summery
+    |> bud get summery
     ```
 
-* view goals, you can filter by `--tags`.
+* view goals, you can filter by `--id`, `--name` or `--tag`..
 
     ```Bash
-    |> bud view goals 
+    |> bud get goals 
     ```
 
 To `set` Financial Goals by `--tag`, `--name` and `--amount`
 
 ```Bash
-|> bud set travel vacation 1000
-```
-
-To `delete` a single transaction use the command `bud delete`:
-
-```Bash
-|> bud delete --id
+|> bud set Croatia 1000€ 100320 1m12x .travel
 ```
 
 To `edit` a single transaction use the command `bud edit`:
 
 ```Bash
 |> bud edit --id Netflix 12€ 100320 1m12x .movies .covid
+```
+
+To `del` a single transaction use the command `bud del`:
+
+```Bash
+|> bud del --id
 ```
 
 To `add` a single transaction use the command `bud add` by `--name*`, `--amount*`, `--startdate`, `--enddate`, `--tag` and `--type`
